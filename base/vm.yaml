@@ -15,36 +15,36 @@ spec:
           cores: 1
         devices:
           disks:
-          - disk:
-              bus: virtio
-            name: rootdisk
-          - disk:
-              bus: virtio
-            name: cloudinitdisk
+            - disk:
+                bus: virtio
+              name: rootdisk
+            - disk:
+                bus: virtio
+              name: cloudinitdisk
         memory:
           guest: 2Gi
       volumes:
-      - name: rootdisk
-        dataVolume:
-          name: centos-dv
-      - name: cloudinitdisk
-        cloudInitNoCloud:
-          userData: |
-            #cloud-config
-            user: centos
-            password: centos
-            chpasswd: { expire: False }
-            ssh_pwauth: True
+        - name: rootdisk
+          dataVolume:
+            name: centos-dv
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              user: centos
+              password: centos
+              chpasswd: { expire: False }
+              ssh_pwauth: True
       dataVolumeTemplates:
-      - metadata:
-          name: centos-dv
-        spec:
-          pvc:
-            accessModes:
+        - metadata:
+            name: centos-dv
+      spec:
+        pvc:
+          accessModes:
             - ReadWriteOnce
-            resources:
-              requests:
-                storage: 10Gi
+          resources:
+            requests:
+              storage: 10Gi
           source:
             http:
               url: "https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-GenericCloud-8-20220913.0.x86_64.qcow2"
