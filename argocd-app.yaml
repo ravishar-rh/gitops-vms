@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: overlays/dev  # Change to 'overlays/prod' for production
-    repoURL: https://github.com/your-username/gitops-vms.git
+    repoURL: https://github.com/ravishar-rh/gitops-vms
     targetRevision: main
   syncPolicy:
     automated:
