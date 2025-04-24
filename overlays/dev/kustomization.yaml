@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: beehive-virtual-machines
+namePrefix: dev-
+resources:
+- ../../base
+- config.yaml
+patches:
+- path: dev-vm-patch.yaml
