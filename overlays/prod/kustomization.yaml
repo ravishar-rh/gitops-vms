@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: beehive-virtual-machines
 namePrefix: prod-
 resources:
-- ../../base
-- config.yaml
+  - ../../base
+  - config.yaml
 patches:
-- path: prod-vm-patch.yaml
+  - path: prod-vm-patch.yaml
